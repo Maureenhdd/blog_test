@@ -21,7 +21,6 @@ function useSinglePost(slug) {
   return [post, isLoading]
 }
 
-
 const readableDate = dateString => new Date(dateString).toLocaleDateString("fr-FR")
 
 export default function SinglePost() {
@@ -32,8 +31,6 @@ export default function SinglePost() {
   const renderPost = () => {
 
     if (isLoading) return
-
-
     {
       postBody = post.body.content.map(content => {
         return content.content.map(para => {
@@ -50,19 +47,27 @@ export default function SinglePost() {
           <div className="single_post_image">
             <img className="single_post_image_content" src={post.picture.fields.file.url} alt={post.picture.fields.title} />
           </div>
-          <p className="single_post_date">{readableDate(post.publishedAt)}</p>
+          <div className="single_post_date_cate">
+            <p className="post_content_category">{post.category}</p>
+            <p className="single_post_date">{readableDate(post.publishedAt)}</p>
+          </div>
           <div className="single_post_body" dangerouslySetInnerHTML={{ __html: postBody }}></div>
         </div>
-      </>)
+      </>
+
+    )
   }
+
   return (
     <>
       <Header />
       <div className="App">
-        {renderPost()}  
-        <Link className="post_back" to="/">
-          {'< Retour'}
-        </Link>
+        {renderPost()}
+        <div className="post_back">
+          <Link className="post_back_content" to="/">
+            {'< Retour'}
+          </Link>
+        </div>
       </div>
       <Footer />
     </>
