@@ -1,38 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.nav_responsive {
+  display: none;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  z-index: 1;
+  background-color: white;
+  padding: 10px
+}
+
+.nav_responsive_img {
+  width: 40px;
+}
+
+.nav_active {
+  transform: translateX(400px);
+}
+
+.nav {
+  width: 100%;
+  background-color: #202020;
+  color: white;
+  top: 0;
+  position: fixed;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.nav_left {
+  display: flex;
+  align-items: center;
+}
+
+.nav_left_logo {
+  width: 50px;
+  padding-left: 20px;
+}
+
+.nav, .nav_right_links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav_right_links_content {
+  margin: 20px;
+  list-style: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.nav_right_links_content:hover {
+  color: #1601ff
+}
+
 .App {
+  margin: 150px 0 0 0;
+}
+
+.banner_title {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.posts_content, .single_post_content {
+  width: 60%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.posts_content_link {
+  width: 48%;
+  margin: 1%;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.posts_content_link:first-child {
+  width: 100%;
+  margin: 50px 0;
+}
+
+.post_content_image {
+  width: 100%;
+  height: 300px;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.posts_content_link:hover .post_content_image {
+  transform: scale(1.2);
+}
+
+.post_content_overflow {
+  overflow: hidden;
+}
+
+.posts_content_link:first-child .post_content_image {
+  height: 500px;
+}
+
+.post_content_category {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgb(22, 1, 255);
+}
+
+.post_content_title {
+  font-size: 18px;
+}
+
+.post_content_title, .post_content_category {
+  margin: 10px 0 0 0;
+}
+
+.single_post_image_content {
+  display: block;
+  margin: auto;
+  height: 500px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .App {
+    margin: 50px 0 0 0;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .posts_content, .single_post_content {
+    width: 90%;
+  }
+  .nav_responsive {
+    display: block;
+  }
+  .nav {
+    left: -400px;
+    width: 300px;
+    height: 100%;
+    position: fixed;
+  }
+  .nav, .nav_right_links {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: start;
+  }
+  .nav_left {
+    display: block;
+    margin: auto;
+  }
+  .nav_left_logo {
+    width: 100px;
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .posts_content_link {
+    width: 100%;
+  }
+  .posts_content_link:first-child .post_content_image,.single_post_image_content {
+    height: 300px;
   }
 }
