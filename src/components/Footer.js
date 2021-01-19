@@ -5,10 +5,6 @@ import facebook from '../img/facebook.svg'
 import twitter from '../img/twitter.svg'
 import { Link } from 'react-router-dom'
 
-
-
-
-
 const Footer = props => {
     return (
         <footer className="footer">
@@ -23,13 +19,8 @@ const Footer = props => {
                         <Link to='/'><img src={facebook} className="footer_img_social" ></img></Link>
                         <Link to='/'><img src={twitter} className="footer_img_social" ></img></Link>
                     </div>
-
                 </div>
-
             </div>
-
-
-
         </footer>
     )
 }

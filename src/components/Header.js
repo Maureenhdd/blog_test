@@ -3,8 +3,6 @@ import menu from '../img/menu.svg'
 import flower from '../img/flower.svg'
 import { Link } from 'react-router-dom'
 
-
-
 class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -47,7 +45,5 @@ class Header extends React.Component {
         )
     }
 }
-
-
 
 export default Header

@@ -8,7 +8,6 @@ class Posts extends React.Component {
   state = {
     articles: [],
     category: 'all'
-
   }
 
   readableDate = dateString => new Date(dateString).toLocaleDateString("fr-FR")
@@ -38,7 +37,6 @@ class Posts extends React.Component {
     })
   }
 
-
   componentDidMount() {
     client.getEntries()
       .then((response) => {
@@ -47,7 +45,6 @@ class Posts extends React.Component {
         })
       }).catch(console.error)
   }
-
 
   getPosts = () => {
     let currentCate = this.state.category;
@@ -72,7 +69,6 @@ class Posts extends React.Component {
     })
   }
 
-
   render() {
     return (
       <>
@@ -80,7 +76,7 @@ class Posts extends React.Component {
         <div className="App">
           <div className="banner">
             <h1 className="banner_title">Tous les articles</h1>
-           
+
             <div className="banner_categories">{this.getCategory()}
               <button onClick={this.filter} data-value='all' className={`category_all banner_categories_content`}>All</button>
             </div>

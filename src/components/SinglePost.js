@@ -28,7 +28,6 @@ const readableDate = dateString => new Date(dateString).toLocaleDateString("fr-F
 export default function SinglePost() {
   const { id } = useParams()
   const [post, isLoading] = useSinglePost(id)
-  let postBody = ''
 
   const renderPost = () => {
 
@@ -63,8 +62,7 @@ export default function SinglePost() {
         {renderPost()}
         <div className="post_back">
           <Link className="post_back_content" to="/">
-            <FontAwesomeIcon className="post_back_i" icon={faAngleLeft} />
-
+            <FontAwesomeIcon className="post_back_i" icon={faAngleLeft}/>
           </Link>
         </div>
       </div>
