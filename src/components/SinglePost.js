@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react'
 import { getSinglePost } from '../client'
 import Header from './Header'
 import Footer from './Footer'
-import marked from 'marked'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 function useSinglePost(slug) {
   const promise = getSinglePost(slug)
@@ -34,11 +34,8 @@ export default function SinglePost() {
 
     if (isLoading) return
     {
-      postBody = post.body.content.map(content => {
-        return content.content.map(para => {
-          return marked(para.value)
-        })
-      })
+
+      postBody = documentToHtmlString(post.body)
     }
 
     return (
@@ -67,8 +64,8 @@ export default function SinglePost() {
         {renderPost()}
         <div className="post_back">
           <Link className="post_back_content" to="/">
-          <FontAwesomeIcon className="post_back_i" icon={faAngleLeft} />
-         
+            <FontAwesomeIcon className="post_back_i" icon={faAngleLeft} />
+
           </Link>
         </div>
       </div>
