@@ -64,63 +64,61 @@
   margin: 150px 0 0 0;
 }
 
-.banner_title,.single_post_title {
+.banner_title, .single_post_title {
   text-align: center;
   font-size: 35px;
-  
 }
 
-.banner_categories{
-  width : 50%; 
-  margin : 50px auto auto auto  ; 
+.banner_categories {
+  width: 50%;
+  margin: 50px auto auto auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap
-
 }
 
-.banner_categories_content, .post_back_content{
-  background : white; 
-  padding : 15px; 
-  width : 120px;
+.banner_categories_content {
+  background: white;
+  padding: 15px;
+  width: 120px;
   transition: 0.4s;
-  border:solid 2px rgb(22, 1, 255);
-  margin : 10px; 
+  border: solid 2px rgb(22, 1, 255);
+  margin: 10px;
 }
 
-
-.banner_categories_content:hover ,.post_back_content:hover{
-  box-shadow: inset 130px 0 0 0  rgb(22, 1, 255);
+.banner_categories_content:hover {
+  box-shadow: inset 130px 0 0 0 rgb(22, 1, 255);
   font-weight: 700;
-  letter-spacing:2px;
+  letter-spacing: 2px;
 }
 
 .slide-in-bottom {
-	-webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 @-webkit-keyframes slide-in-bottom {
   0% {
     -webkit-transform: translateY(1000px);
-            transform: translateY(1000px);
-            opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-in-bottom {
-  0% {
-    -webkit-transform: translateY(1000px);
-            transform: translateY(1000px);
+    transform: translateY(1000px);
     opacity: 0;
   }
   100% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -180,10 +178,10 @@
   margin: 10px 0 0 0;
 }
 
-.single_post_content{
-  width : 60%;
-  display : block ; 
-  margin : 30px auto ; 
+.single_post_content {
+  width: 60%;
+  display: block;
+  margin: 30px auto;
 }
 
 .single_post_image_content {
@@ -193,30 +191,43 @@
   width: 100%;
 }
 
-.single_post_date_cate{
-  display  : flex ; 
+.single_post_date_cate {
+  display: flex;
   justify-content: space-between;
 }
 
-.post_back{
-  display : flex ; 
-  margin : 20px auto;
+.post_back {
   text-align: center;
-  width : 130px;  
+  margin: 60px auto;
+  width: 150px;
 }
 
-.post_back_content{
+.post_back_content {
   text-decoration: none;
-  color:black;
-  text-align: center; 
+  color: white;
+  text-align: center;
+  padding: 25px;
+  border-radius: 50%;
+  transition: 0.4s;  
+  border : solid 2px rgb(22, 1, 255);
+  color :rgb(22, 1, 255);
 }
 
+.post_back_i {
+  width: 20px!important;
+  font-size: 1.3em;
+}
+
+.post_back_content:hover {
+  box-shadow: inset 120px 0px 0px 0 rgb(22, 1, 255);
+  background-color: rgb(22, 1, 255);
+  color : white;
+}
 
 @media only screen and (max-width: 1024px) {
   .App {
     margin: 50px 0 0 0;
   }
-  
   .posts_content, .single_post_content {
     width: 90%;
   }
@@ -232,7 +243,6 @@
   .nav, .nav_right_links {
     display: flex;
     flex-direction: column-reverse;
-    
   }
   .nav_left {
     display: block;
@@ -242,12 +252,12 @@
     width: 100px;
     padding-left: 0;
   }
-  .single_post_title{
-    font-size : 25px; 
-    margin : 100px 0 40px 0 ;
+  .single_post_title {
+    font-size: 25px;
+    margin: 100px 0 40px 0;
   }
-  .banner_categories{
-    width : 100%; 
+  .banner_categories {
+    width: 100%;
   }
 }
 
@@ -255,7 +265,7 @@
   .posts_content_link {
     width: 100%;
   }
-  .posts_content_link:first-child .post_content_image,.single_post_image_content {
+  .posts_content_link:first-child .post_content_image, .single_post_image_content {
     height: 300px;
   }
 }

@@ -5,6 +5,8 @@ import { getSinglePost } from '../client'
 import Header from './Header'
 import Footer from './Footer'
 import marked from 'marked'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 function useSinglePost(slug) {
   const promise = getSinglePost(slug)
@@ -65,7 +67,8 @@ export default function SinglePost() {
         {renderPost()}
         <div className="post_back">
           <Link className="post_back_content" to="/">
-            {'< Retour'}
+          <FontAwesomeIcon className="post_back_i" icon={faAngleLeft} />
+         
           </Link>
         </div>
       </div>
