@@ -5,7 +5,7 @@ import { getSinglePost } from '../client'
 import Header from './Header'
 import Footer from './Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 function useSinglePost(slug) {
@@ -32,11 +32,7 @@ export default function SinglePost() {
 
   const renderPost = () => {
 
-    if (isLoading) return
-    {
-
-      postBody = documentToHtmlString(post.body)
-    }
+    if (isLoading) return ''
 
     return (
 
@@ -48,9 +44,12 @@ export default function SinglePost() {
           </div>
           <div className="single_post_date_cate">
             <p className="post_content_category">{post.category}</p>
-            <p className="single_post_date">{readableDate(post.publishedAt)}</p>
+            <div className="date">
+              <FontAwesomeIcon className="date_i" icon={faCalendarDay} />
+              <p className="single_post_date">{readableDate(post.publishedAt)}</p>
+            </div>
           </div>
-          <div className="single_post_body" dangerouslySetInnerHTML={{ __html: postBody }}></div>
+          <div className="single_post_body" dangerouslySetInnerHTML={{ __html: documentToHtmlString(post.body) }}></div>
         </div>
       </>
 

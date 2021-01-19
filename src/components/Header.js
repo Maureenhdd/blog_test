@@ -1,6 +1,7 @@
 import React from 'react'
 import menu from '../img/menu.svg'
 import flower from '../img/flower.svg'
+import { Link } from 'react-router-dom'
 
 
 
@@ -29,15 +30,15 @@ class Header extends React.Component {
                     </div>
                     <nav className={"nav" + ' ' + (this.state.isNavOpen ? "nav_active" : '')} >
                         <div className="nav_left">
-                        <img src={flower} className="nav_left_logo" alt="logo flower"></img>
+                            <img src={flower} className="nav_left_logo" alt="logo flower"></img>
                         </div>
                         <div className="nav_right">
                             <ul className="nav_right_links">
-                                <li className="nav_right_links_content">Home</li>
-                                <li className="nav_right_links_content">Blog</li>
-                                <li className="nav_right_links_content">Category</li>
-                                <li className="nav_right_links_content">Link</li>
-                                <li className="nav_right_links_content">Link</li>
+                                <Link className="nav_right_links_content" to='/'><li className="nav_right_links_li">Home</li></Link>
+                                <Link className="nav_right_links_content" to='/'><li className="nav_right_links_li">Blog</li></Link>
+                                <Link className="nav_right_links_content" to='/'><li className="nav_right_links_li">Category</li></Link>
+                                <Link className="nav_right_links_content" to='/'><li className="nav_right_links_li">Link</li></Link>
+                                <Link className="nav_right_links_content" to='/'><li className="nav_right_links_li">Link</li></Link>
                             </ul>
                         </div>
                     </nav>
