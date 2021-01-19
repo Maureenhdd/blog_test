@@ -54,7 +54,7 @@ class Posts extends React.Component {
     let tmpArray = this.state.articles;
 
     return tmpArray.map(post => {
-      if (post.fields.category == currentCate || currentCate == 'all') {
+      if (post.fields.category === currentCate || currentCate === 'all') {
         return (
           <Link className="posts_content_link slide-in-bottom" key={post.fields.slug} to={post.fields.slug}>
             <div className='post'>

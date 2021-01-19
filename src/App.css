@@ -230,7 +230,7 @@
   .nav, .nav_right_links {
     display: flex;
     flex-direction: column-reverse;
-    justify-content: start;
+    
   }
   .nav_left {
     display: block;

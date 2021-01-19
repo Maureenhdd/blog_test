@@ -29,7 +29,7 @@ class Header extends React.Component {
                     </div>
                     <nav className={"nav" + ' ' + (this.state.isNavOpen ? "nav_active" : '')} >
                         <div className="nav_left">
-                        <img src={flower} className="nav_left_logo" alt="logo"></img>
+                        <img src={flower} className="nav_left_logo" alt="logo flower"></img>
                         </div>
                         <div className="nav_right">
                             <ul className="nav_right_links">
