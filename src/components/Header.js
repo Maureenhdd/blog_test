@@ -19,9 +19,8 @@ class Header extends React.Component {
 
     render() {
         return (
-            <>
                 <div>
-                    {this.ok}
+                    {this.ok} 
                     <div className="nav_responsive" onClick={this.openNav}>
                         <img src={menu} className="nav_responsive_img"></img>
                     </div>
@@ -40,7 +39,6 @@ class Header extends React.Component {
                         </div>
                     </nav>
                 </div>
-            </>
         )
     }
 }

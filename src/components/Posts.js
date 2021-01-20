@@ -1,54 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Header from './Header'
-import { client } from '../client'
+import { useClient } from '../client'
 import Footer from './Footer'
 
-class Posts extends React.Component {
-  state = {
-    articles: [],
-    category: 'all'
-  }
+// Don't repeat yourself, if you need to use a value more than once, store it somewhere
+const ALL_CATEGORY = 'all'
 
-  readableDate = dateString => new Date(dateString).toLocaleDateString("fr-FR")
+// Don't repeat yourself, if you need to use a piece of code more than opnce, create a function
+export const readableDate = dateString => new Date(dateString).toLocaleDateString("fr-FR")
 
-  //get category 
-  getCategory = () => {
-    let cate = []
-    this.state.articles.map(post => {
-      cate.push(post.fields.category)
-      return cate
-    })
+// Functionnal components are the way to go in new react projects
+export default () => {
+  const [articles, setArticles] = useState([])
+  const [category, setCategory] = useState(ALL_CATEGORY)
+  const [client] = useClient()
+
+  const filter = (categ) => setCategory(categ)
+
+  useEffect(() => {
+    const proc = async () => setArticles((await client.getEntries()).items)
+
+    proc()
+  },[])
+
+  const getCategory = () => {
+    // Map is use to transform an array into another one, you don't need to mutate a third array as you would do with foreach
+    const cate = articles.map(post => post.fields.category)
 
     // delete doublon from the array 
-    let filterCat = new Set(cate)
-    let categories = [...filterCat]
+    // 👍 nice trick, didn't know it
+    const categories = [...(new Set(cate))]
 
-    return categories.map(categ => (
-      <button onClick={this.filter} data-value={categ} className={`category_${categ} banner_categories_content`} key={categ}>{categ}</button>
-    )
-    )
-  }
-
-  //get category onClick
-  filter = (e) => {
-    this.setState({
-      category: e.target.getAttribute('data-value')
+    // Don't use html attributes it is the way angular and vue work but not react
+    return categories.map(categ => {
+      return <button key={categ} onClick={ () => filter(categ)} className={`category_${categ} banner_categories_content`} >{categ}</button>
     })
   }
 
-  componentDidMount() {
-    client.getEntries()
-      .then((response) => {
-        this.setState({
-          articles: response.items,
-        })
-      }).catch(console.error)
-  }
-
-  getPosts = () => {
-    return this.state.articles.map(post => {
-      if (post.fields.category === this.state.category || this.state.category === 'all') {
+  // renderPosts is a better name than getPosts in this case
+  const renderPosts = () => {
+    return articles.map(post => {
+      if (post.fields.category === category || category === ALL_CATEGORY) {
         return (
           <Link className="posts_content_link slide-in-bottom" key={post.fields.slug} to={post.fields.slug}>
             <div className='post'>
@@ -57,7 +50,7 @@ class Posts extends React.Component {
               </div>
               <p className="post_content_category">{post.fields.category}</p>
               <h3 className='post_content_title'>{post.fields.title}</h3>
-              <p>{this.readableDate(post.fields.publishedAt)}</p>
+              <p>{readableDate(post.fields.publishedAt)}</p>
             </div>
           </Link>
 
@@ -66,24 +59,20 @@ class Posts extends React.Component {
     })
   }
 
-  render() {
-    return (
-      <>
-        <Header />
-        <div className="App">
-          <div className="banner">
-            <h1 className="banner_title">Tous les articles</h1>
-            <div className="banner_categories">{this.getCategory()}
-              <button onClick={this.filter} data-value='all' className={`category_all banner_categories_content`}>All</button>
-            </div>
+  return (
+    <>
+      <Header />
+      <div className="App">
+        <div className="banner">
+          <h1 className="banner_title">Tous les articles</h1>
+          <div className="banner_categories">{getCategory()}
+            <button onClick={() => filter(ALL_CATEGORY)}  className={`category_all banner_categories_content`}>All</button>
           </div>
-          <div className="posts_content">{this.getPosts()}</div>
         </div>
-        <Footer />
-      </>
-    );
-  }
+        <div className="posts_content">{renderPosts()}</div>
+      </div>
+      <Footer />
+    </>
+  );
 
 }
-
-export default Posts

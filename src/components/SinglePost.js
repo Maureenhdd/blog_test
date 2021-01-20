@@ -7,8 +7,9 @@ import Footer from './Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { readableDate } from './Posts'
 
-function useSinglePost(slug) {
+const useSinglePost = (slug) => {
   const promise = getSinglePost(slug)
   const [post, setPost] = useState(null)
   const [isLoading, setLoading] = useState(true)
@@ -23,9 +24,8 @@ function useSinglePost(slug) {
   return [post, isLoading]
 }
 
-const readableDate = dateString => new Date(dateString).toLocaleDateString("fr-FR")
 
-export default function SinglePost() {
+export default () => {
   const { id } = useParams()
   const [post, isLoading] = useSinglePost(id)
 
