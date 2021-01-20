@@ -15,7 +15,6 @@ class Header extends React.Component {
     openNav() {
         const currentState = this.state.isNavOpen;
         this.setState({ isNavOpen: !currentState });
-        console.log(currentState)
     }
 
     render() {

@@ -47,11 +47,8 @@ class Posts extends React.Component {
   }
 
   getPosts = () => {
-    let currentCate = this.state.category;
-    let tmpArray = this.state.articles;
-
-    return tmpArray.map(post => {
-      if (post.fields.category === currentCate || currentCate === 'all') {
+    return this.state.articles.map(post => {
+      if (post.fields.category === this.state.category || this.state.category === 'all') {
         return (
           <Link className="posts_content_link slide-in-bottom" key={post.fields.slug} to={post.fields.slug}>
             <div className='post'>
@@ -76,7 +73,6 @@ class Posts extends React.Component {
         <div className="App">
           <div className="banner">
             <h1 className="banner_title">Tous les articles</h1>
-
             <div className="banner_categories">{this.getCategory()}
               <button onClick={this.filter} data-value='all' className={`category_all banner_categories_content`}>All</button>
             </div>

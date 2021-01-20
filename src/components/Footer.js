@@ -15,9 +15,9 @@ const Footer = props => {
                     <p className="footer_text"> Nuage chamarré d'or et un anneau. Sommé de se rendre introuvable.</p>
                     <h4 className="footer_title">Follow us ! </h4>
                     <div className="footer_social" >
-                        <Link to='/'><img src={insta} className="footer_img_social" ></img></Link>
-                        <Link to='/'><img src={facebook} className="footer_img_social" ></img></Link>
-                        <Link to='/'><img src={twitter} className="footer_img_social" ></img></Link>
+                        <Link to='/'><img src={insta} className="footer_img_social" alt="logo"></img></Link>
+                        <Link to='/'><img src={facebook} className="footer_img_social" alt="logo"></img></Link>
+                        <Link to='/'><img src={twitter} className="footer_img_social" alt="logo"></img></Link>
                     </div>
                 </div>
             </div>
