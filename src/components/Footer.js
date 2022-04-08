@@ -12,7 +12,7 @@ const Footer = props => {
                 <div className="footer_content">
                     <img src={flower} className="footer_logo" alt="logo flower"></img>
                     <h4 className="footer_title">About us</h4>
-                    <p className="footer_text"> Nuage chamarré d'or et un anneau. Sommé de se rendre introuvable.</p>
+                    <p className="footer_text"> Nuage chamarré  oui d'or et un anneau. Sommé de se rendre introuvable.</p>
                     <h4 className="footer_title">Follow us ! </h4>
                     <div className="footer_social" >
                         <Link to='/'><img src={insta} className="footer_img_social" alt="logo"></img></Link>
